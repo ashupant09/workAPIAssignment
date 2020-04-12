@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="com.assignment.coolassignment">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -12,12 +13,13 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name="com.assignment.coolassignment.ui.view.ListDetailActivity"
-                  android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
+        <activity android:name=".ui.view.FlickerImageViewActivity"/>
+        <activity
+                android:name=".ui.view.ListDetailActivity"
+                android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
         <activity android:name=".ui.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>

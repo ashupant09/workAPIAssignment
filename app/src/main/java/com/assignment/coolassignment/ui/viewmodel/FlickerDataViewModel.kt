@@ -24,15 +24,14 @@ class FlickerDataViewModel : BaseViewModel() {
 
     fun loadFlickerData() {
         val data = HashMap<String, String>()
-        //https://www.flickr.com/services/rest/?method=&api_key=&per_page&page&format=json&nojsoncallback=1&api_sig=82f8c83d6ecc6d72548beb1f7dd74624
+        //https://www.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=e449b259146e14b0d55e770fb3577436&per_page=20&page=1&format=json&nojsoncallback=1
         data.apply {
             put("method", "flickr.photos.getRecent")
-            put("api_key", "0f00fa6ecb007e64a9c1d38076e53303")
-            put("per_page", "20")
+            put("api_key", "e449b259146e14b0d55e770fb3577436")
+            put("per_page", "30")
             put("page", "1")
             put("format", "json")
             put("nojsoncallback", "1")
-            put("api_sig", "82f8c83d6ecc6d72548beb1f7dd74624")
         }
         subscription = flickerApi.getFlickerData(data)
             .subscribeOn(Schedulers.io())

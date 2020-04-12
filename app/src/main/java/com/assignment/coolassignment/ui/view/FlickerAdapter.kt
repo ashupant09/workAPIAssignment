@@ -1,15 +1,21 @@
 package com.assignment.coolassignment.ui.view
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.assignment.coolassignment.R
 import com.assignment.coolassignment.pojo.Photo
 import com.squareup.picasso.Picasso
 
-class FlickerAdapter: RecyclerView.Adapter<FlickerAdapter.FlickerViewHolder>() {
+class FlickerAdapter(private val context: Context?): RecyclerView.Adapter<FlickerAdapter.FlickerViewHolder>() {
 
     var photoList: List<Photo> = arrayListOf()
 
@@ -44,6 +50,17 @@ class FlickerAdapter: RecyclerView.Adapter<FlickerAdapter.FlickerViewHolder>() {
                 .placeholder(R.mipmap.ic_launcher_round)
                 .error(R.mipmap.ic_launcher_round)
                 .into(holder.imgAvatar);
+
+            ViewCompat.setTransitionName(holder.imgAvatar, photoList[position].id)
+            holder.itemView.setOnClickListener {
+                val intent = Intent(context, FlickerImageViewActivity::class.java)
+                intent.putExtra("imgURL", imgUrl)
+                intent.putExtra("trans_name", ViewCompat.getTransitionName(holder.imgAvatar))
+                val option = ActivityOptionsCompat.makeSceneTransitionAnimation(context as Activity, holder.imgAvatar,
+                    ViewCompat.getTransitionName(holder.imgAvatar)!!)
+
+                context.startActivity(intent, option.toBundle())
+            }
         }
     }
 

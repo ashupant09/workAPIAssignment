@@ -7,5 +7,6 @@ import retrofit2.http.GET
 
 interface ListApi {
     @GET("posts")
-    fun getData(): Observable<Response<List<Data>>>
+    suspend fun getData(): Response<List<Data>>
+    //fun getData(): Observable<Response<List<Data>>>
 }

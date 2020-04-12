@@ -23,7 +23,7 @@ class FlickerListFragment : Fragment() {
 
     lateinit var viewModel: FlickerDataViewModel
     private val flickerAdapter: FlickerAdapter by lazy {
-        FlickerAdapter()
+        FlickerAdapter(activity)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +46,7 @@ class FlickerListFragment : Fragment() {
         flicker_recycler.apply {
             adapter = flickerAdapter
             layoutManager = GridLayoutManager(context, 2)
+            addItemDecoration(GridItemDecoration(10, 2))
         }
         viewModel.developerData.observe(viewLifecycleOwner, Observer {
                 state->
